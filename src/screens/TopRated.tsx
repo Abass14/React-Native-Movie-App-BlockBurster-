@@ -11,6 +11,7 @@ import {
   Alert
 } from 'react-native';
 import { MovieCard } from '../component/major/MovieCard';
+import { AppName } from '../component/mini/AppName';
 
 export const TopRated = () =>{
 
@@ -39,12 +40,15 @@ export const TopRated = () =>{
 
     return(
       <View style={styles.view}>
+          <View style={{padding: 10, marginHorizontal: 10, marginTop: 30, borderWidth: 1, borderColor: 'red', borderRadius: 5}}>
+            <AppName />
+          </View>
           <View style={styles.textView}>
-            <Text style={styles.header}>Top Rated Screen</Text>
+            <Text style={styles.header}>Top Rated Movies</Text>
           </View>
           <View style={styles.cardStyle}>
             <FlatList 
-              style={{width: '100%'}}
+              style={{width: '100%', marginBottom: 160}}
               keyExtractor={(item: any, index: number)=>index.toString()}
               data={movie}
               renderItem={theMovie =>(
@@ -69,13 +73,13 @@ export const TopRated = () =>{
 const styles = StyleSheet.create({
     view: {
       flex: 1,
-      backgroundColor: 'black'
+      backgroundColor: 'black',
     },
     textView:{
-      marginTop: 40
+      marginTop: 30
     },
     header:{
-      fontSize: 30,
+      fontSize: 20,
       fontWeight: '600',
       marginLeft: 20,
       color: 'white'

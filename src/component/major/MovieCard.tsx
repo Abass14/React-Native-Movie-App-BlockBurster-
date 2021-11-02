@@ -29,7 +29,7 @@ export const MovieCard = (props: Title) =>{
                 </View>
                 <View style={styles.viewText}>
                     <View style={{justifyContent: 'space-evenly'}}>
-                        <Text style={styles.text}>{props.title}</Text>
+                        <Text numberOfLines={1} style={styles.title}>{props.title}</Text>
                         <Text style={styles.text}>{props.date}</Text>
                     </View>
                     <View style={{justifyContent: 'flex-end'}}>
@@ -70,11 +70,17 @@ const styles = StyleSheet.create({
         color: 'white',
         marginLeft: 15
     },
+    title: {
+        fontSize: 15,
+        color: 'white',
+        marginLeft: 15,
+        width: 150,
+    },
     button:{
         width: 50,
         height: 30,
         backgroundColor: 'red',
-        marginRight: 10,
+        marginRight: 15,
         marginBottom: 10,
         justifyContent: 'center',
         borderRadius: 5

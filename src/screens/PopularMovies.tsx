@@ -14,6 +14,7 @@ import {
 } from 'react-native';
 import { MovieCard } from '../component/major/MovieCard';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { AppName } from '../component/mini/AppName';
 
 type RootStackParamList = {
   Home: undefined;
@@ -52,13 +53,16 @@ export const PopularMovies = ({ route, navigation }: Props) =>{
     return(
       <View style={{backgroundColor: 'black', flex: 1}}>
         <View>
+          <View style={{padding: 10, marginHorizontal: 10, marginTop: 30, borderWidth: 1, borderColor: 'red', borderRadius: 5}}>
+            <AppName />
+          </View>
           <View>
             <Text style={styles.header}>Popular Movies</Text>
           </View>
           
           <View style={styles.cardStyle}>
             <FlatList 
-              style={{width: '100%'}}
+              style={{width: '100%', marginBottom: 310}}
               keyExtractor={(item: any, index: number)=>index.toString()}
               data={movie}
               renderItem={theMovie =>(
@@ -88,10 +92,10 @@ const styles = StyleSheet.create({
       marginTop: 20
     },
     header:{
-      fontSize: 30,
+      fontSize: 20,
       fontWeight: '600',
       marginLeft: 20,
       color: 'white',
-      marginTop: 40
+      marginTop: 30
     }
 })
