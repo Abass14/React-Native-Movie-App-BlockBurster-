@@ -11,13 +11,24 @@ import {
   Alert
 } from 'react-native';
 import { MovieCard } from '../component/major/MovieCard';
+import { NativeStackScreenProps, createNativeStackNavigator } from '@react-navigation/native-stack';
 import { AppName } from '../component/mini/AppName';
+import {useNavigation} from '@react-navigation/native'
+
+type RootStackParamList = {
+  Details: undefined;
+  Profile: { userId: string };
+  Feed: { sort: 'latest' | 'top' } | undefined;
+};
+
+type Props = NativeStackScreenProps<RootStackParamList, 'Profile'>;
 
 export const TopRated = () =>{
-
+  const navigation = useNavigation();
   const [movie, setMovie] = useState([]);
   const handleClick = () => {
-    Alert.alert('should navigate')
+    // Alert.alert('should navigate')
+    navigation.navigate('Details')
   }
   const handleSave = () => {
     Alert.alert('should save')
@@ -51,13 +62,14 @@ export const TopRated = () =>{
               style={{width: '100%', marginBottom: 160}}
               keyExtractor={(item: any, index: number)=>index.toString()}
               data={movie}
+              numColumns={2}
               renderItem={theMovie =>(
-                <View style={{margin: 10}}>
+                <View style={{margin: 10, width: 150}}>
                   <MovieCard 
                     title={theMovie.item.title}
                     date={theMovie.item.release_date} 
                   image={`https://image.tmdb.org/t/p/w342${theMovie.item.poster_path}`}
-                    handleMovieClick={handleClick}
+                    handleMovieClick={() =>  navigation.navigate('Details', {movieId: theMovie.item.id})}
                     handleSaveMovie={handleSave}
                   />
                 </View>
@@ -85,8 +97,8 @@ const styles = StyleSheet.create({
       color: 'white'
     },
     cardStyle:{
-      marginLeft: 40,
-      marginRight: 40,
+      marginLeft: 10,
+      marginRight: 10,
       marginTop: 20
     },
 })

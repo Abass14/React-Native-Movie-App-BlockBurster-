@@ -19,26 +19,28 @@ import {
   View,
 } from 'react-native';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
-// import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { PopularMovies } from './src/screens/PopularMovies';
 import { TopRated } from './src/screens/TopRated';
 import { FavoriteMovies } from './src/screens/FavoriteMovies';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import { Details } from './src/screens/Details';
+import {FirstScreenNavigator} from './src/screens/nested/FirstScreenNavigator'
+import { SecondScreenNavigator } from './src/screens/nested/SecondScreenNavigator';
 
 
+// type AuthStackParamList = {
+//   Details: undefined
+// }
 // registerScreens([Details]);
 const Tab = createMaterialBottomTabNavigator();
-// const Stack = createNativeStackNavigator(); 
+const Stack = createNativeStackNavigator(); 
 
 
 const App = () => {
   return (
     <NavigationContainer>
-      {/* <Stack.Navigator>
-
-      </Stack.Navigator> */}
       <Tab.Navigator
         screenOptions={({route}) =>({
           tabBarIcon: ({focused, color}) => {
@@ -65,15 +67,15 @@ const App = () => {
         inactiveColor='white'
       >
         <Tab.Screen 
-          name="PopularMovies"
-          component={PopularMovies}
+          name="Popular Movies"
+          component={FirstScreenNavigator}
         />
         <Tab.Screen 
-          name="TopRated"
-          component={TopRated}
+          name="Top Movies"
+          component={SecondScreenNavigator}
         />
         <Tab.Screen 
-          name="FavoriteMovies"
+          name="Favorite Movies"
           component={FavoriteMovies}
         />
       </Tab.Navigator>

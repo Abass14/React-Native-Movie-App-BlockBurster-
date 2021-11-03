@@ -73,14 +73,15 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 15,
         color: 'white',
-        marginLeft: 15,
-        width: 150,
+        marginHorizontal: 15,
+        width: 60,
     },
     button:{
-        width: 50,
+        width: 40,
         height: 30,
+        fontSize: 12,
         backgroundColor: 'red',
-        marginRight: 15,
+        marginRight: 5,
         marginBottom: 10,
         justifyContent: 'center',
         borderRadius: 5
